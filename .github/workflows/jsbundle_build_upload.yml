@@ -1,0 +1,36 @@
+name: jsbundle Build and Upload 
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: use Node.js 13.2.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: 13.2.0
+
+      - name: setup kernel for react native, increase watchers
+        run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
+      - name: npm install
+        run: npm install 
+        shell: bash
+    
+      - name: build jsbundle 
+        run: |
+          npm run build:ios
+          npm run build:android
+        shell: bash
+
+      - name: upload jsbundle
+        uses: actions/upload-artifact@v2
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        with:
+          name: jsbundle-$PR_NUMBER
+          path: .jsbundle
