@@ -33,4 +33,4 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         with:
           name: jsbundle-$PR_NUMBER
-          path: .jsbundle
+          path: jsbundle
