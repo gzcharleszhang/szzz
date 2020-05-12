@@ -7,6 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
+    "build:android": "mkdir -p .jsbundle/android/{assets,res} && react-native bundle --platform android --dev false --entry-file index.js --bundle-output .jsbundle/android/assets/index.android.bundle --assets-dest .jsbundle/android/res",
+    "build:ios": "mkdir -p .jsbundle/ios/{assets,res} && react-native bundle --platform ios --dev false --entry-file index.js --bundle-output .jsbundle/ios/assets/index.ios.bundle --assets-dest .jsbundle/ios/res",
     "lint": "eslint ."
   },
   "dependencies": {
