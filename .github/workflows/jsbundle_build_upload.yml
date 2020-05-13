@@ -18,9 +18,8 @@ jobs:
         run: npm install 
         shell: bash
     
-      - name: build jsbundle 
-        run: |
-          npm run test
+      - name: run test
+        run: npm run test
         shell: bash
         
   build:
