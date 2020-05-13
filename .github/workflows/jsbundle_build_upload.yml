@@ -29,8 +29,20 @@ jobs:
 
       - name: upload jsbundle
         uses: actions/upload-artifact@v2
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
         with:
-          name: jsbundle-$PR_NUMBER
+          name: jsbundle-${{ github.event.pull_request.number }}
           path: jsbundle
+
+      - name: comment about jsbundle 
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            jsbundle is built and uploaded
+            
+            What to do next:
+            - [ ] reload the new jsbundle
+            - [ ] tophat the new App
+          reactions: '+1'
+
+
