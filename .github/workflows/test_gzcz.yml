@@ -6,8 +6,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+        with:
+          node-version: 13.2.0
       - uses: ottocho/gzcz@master
         with:
           setup_command: npm install
@@ -15,4 +17,5 @@ jobs:
           dist_path: 'dist'
           app_name: 'szzz'
           storage_type: 'gcs'
-          token: ${{ secrets.GITHUB_TOKEN }}
+          storage_bucket: 'test'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
