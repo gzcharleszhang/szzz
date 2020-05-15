@@ -18,4 +18,4 @@ jobs:
           app_name: 'szzz'
           storage_type: 'gcs'
           storage_bucket: 'test'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ github.event.pull_request.number }}
