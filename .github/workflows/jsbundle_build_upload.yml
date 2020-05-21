@@ -46,7 +46,7 @@ jobs:
       - name: upload and generate QR code
         uses: ottocho/gzcz@master
         with:
-          dist_path: '/jsbundle'
+          dist_path: 'jsbundle'
           app_name: 'szzz'
           storage_project_id: ${{ secrets.GCP_PROJECT_ID }}
           storage_type: 'gcs'
