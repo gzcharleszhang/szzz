@@ -49,7 +49,5 @@ jobs:
           dist_path: 'jsbundle'
           app_name: 'szzz'
           storage_project_id: ${{ secrets.GCP_PROJECT_ID }}
-          storage_type: 'gcs'
           storage_bucket: ${{ secrets.GCP_BUCKET_NAME }}
           storage_auth_token: ${{ secrets.GCP_AUTH_TOKEN }}
-          pr_number: ${{ github.event.pull_request.number }}
