@@ -43,24 +43,11 @@ jobs:
           npm run build:android
         shell: bash
 
-      - name: upload jsbundle
-        uses: actions/upload-artifact@v2
+      - name: upload and generate QR code
+        uses: ottocho/gzcz@master
         with:
-          name: jsbundle-${{ github.event.pull_request.number }}
-          path: jsbundle
-
-      - name: comment about jsbundle 
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            jsbundle is built and uploaded
-            
-            link to the jsbundle: https://a.b.com
-            
-            What to do next:
-            - [ ] reload the new jsbundle
-            - [ ] tophat the new App
-          reactions: '+1'
-
-
+          dist_path: 'jsbundle'
+          app_name: 'szzz'
+          storage_project_id: ${{ secrets.GCP_PROJECT_ID }}
+          storage_bucket: ${{ secrets.GCP_BUCKET_NAME }}
+          storage_auth_token: ${{ secrets.GCP_AUTH_TOKEN }}
